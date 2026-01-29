@@ -1,0 +1,13 @@
+volumes:
+  caddy_data: {}
+
+services:
+  app:
+    image: caddy:latest
+    restart: unless-stopped
+    environment:
+      - TZ=Europe/Berlin
+    volumes:
+      - ./App/src:/app
+      - caddy_data:/data
+      - ./Caddyfile:/etc/caddy/Caddyfile
